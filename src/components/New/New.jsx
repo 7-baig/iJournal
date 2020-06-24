@@ -17,9 +17,10 @@ const New = () => {
     }
 
     const save = () => {
-        // localStorage.setItem('store', stateValue)
+        localStorage.setItem('store', stateValue)
+        const getValue = localStorage.getItem('store')
         const items = {
-            name: localStorage.setItem('store', stateValue)
+            name: getValue
         }
         setValue([...value, items])
         history.push('/')
