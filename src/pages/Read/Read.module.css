@@ -1,0 +1,18 @@
+.container {
+    flex-grow: 9;
+    width: 90%;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    padding: 5px;
+    box-shadow: 3px 3px 10px 12px lightgray;
+    margin-bottom: 20px;
+}
+.empty {
+    flex-grow: 9;
+    font-family: monospace;
+    color: lightcoral;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

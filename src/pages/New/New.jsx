@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ReactHtmlParser from 'react-html-parser';
 import { useHistory } from 'react-router-dom'
-import { GlobalContext } from '../Context/Context'
+import styles from './New.module.css'
+import SaveIcon from '@material-ui/icons/Save';
 
 const New = () => {
     
     const [stateValue, setStateValue] = useState()
-    const [value, setValue] = useContext(GlobalContext)
     let history = useHistory()
 
     const handleChange = (e, editor) => {
@@ -18,23 +17,27 @@ const New = () => {
 
     const save = () => {
         localStorage.setItem('store', stateValue)
-        const getValue = localStorage.getItem('store')
-        const items = {
-            name: getValue
-        }
-        setValue([...value, items])
         history.push('/')
     }
 
     return (
-        <div>
-            <h1>Editor</h1>
+        <div className={styles.container} >
             <CKEditor 
                 editor={ClassicEditor}
                 onChange={handleChange}
+                style={{width: '70px'}}
             />
-            <button onClick={save} >Save</button>
-
+            {
+                stateValue
+                ?
+                <button 
+                    onClick={save} 
+                    className={styles.button}
+                >
+                    <SaveIcon />Save
+                </button>
+                : null
+            }
         </div>
     )
 }

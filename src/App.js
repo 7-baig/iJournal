@@ -1,26 +1,31 @@
 import React from 'react'
+import './App.css'
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch
 } from 'react-router-dom'
-import Home from './components/Home/Home'
-import New from './components/New/New'
-import GlobalProvider from './components/Context/Context'
+import Home from './pages/Home/Home'
+import New from './pages/New/New'
+import { Edit } from './pages/Edit/Edit'
+import { Read } from './pages/Read/Read'
+import { Layout } from './components/Layout/Layout'
 
 
 function App() {
   return (
-      <GlobalProvider>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/new" component={New} />
+            <Route path="/new" component={New} exact />
+            <Route path="/edit" component={Edit} exact />
+            <Route path="/read" component={Read} exact />
             <Redirect to="/" />
           </Switch>
-        </Router>
-      </GlobalProvider>
+        </Layout>
+      </Router>
   )
 }
 
